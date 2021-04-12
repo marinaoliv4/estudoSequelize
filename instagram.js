@@ -28,6 +28,7 @@ const { Op } = require('sequelize');
 //comenario
 
 //buscar comentarios e exibir 2 por vez
+//exemplo abaixo feito por herbert 
 
 for (let i = 0; i < 6; i += 2) {
     Comentario.findAll({
