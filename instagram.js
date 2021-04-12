@@ -38,9 +38,9 @@ const { Op } = require('sequelize');
 // });
 
 // LISTA OS USUARIOS
-Usuario.findAll().then((usuarios) => {
-    console.log(usuarios.map((usuario) => usuario.toJSON()));
-})
+// Usuario.findAll().then((usuarios) => {
+//     console.log(usuarios.map((usuario) => usuario.toJSON()));
+// })
 
 // usuario com letra "a" no nome
 // Usuario.findAll({
@@ -100,13 +100,13 @@ Usuario.findAll().then((usuarios) => {
 
 //post
 //criando um post relacionado ao meu usuario
-Post.create({
-  texto: 'estudando sequelize!',
-  usuarios_id: 14,
-  n_likes: 1,
-}).then((resultado) => {
-  console.log(resultado.toJSON());
-});
+// Post.create({
+//   texto: 'estudando sequelize!',
+//   usuarios_id: 14,
+//   n_likes: 1,
+// }).then((resultado) => {
+//   console.log(resultado.toJSON());
+// });
 
 // Post.findAll().then((posts) => {
 //     console.log(posts_id.map((posts) => post.toJSON()));
@@ -122,6 +122,32 @@ Post.create({
 //     ;
 // });
 
+//findByPk 
+
+// Usuario.findByPk (1, {
+//     include: [
+//         {association: "posts"}
+//     ]
+// })
+// .then((usuario) => {
+//     console.table(usuario.posts.map((post) => post.toJSON()))
+// })
 
 
 
+//outra forma
+// Usuario.findByPk (1, {include: ["posts"]}).then(
+//     usuario => {
+//         console.log(usuario.toJSON());
+//         sequelize.close();
+//     }
+// )
+
+Post.findByPk( 1, {
+    include: [
+        {association: "comentarios"}
+    ]
+})
+.then((post) => {
+    console.log(post.comentarios.map((comentario) => comentario.toJSON()))
+});

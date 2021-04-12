@@ -13,6 +13,13 @@ module.exports = (sequelize, DataTypes) => {
         
     );
 
+
+
+Comentario.associate = (models) => {
+        // relação 1:n (um usuario tem vários posts)
+        Comentario.belongsTo(models.Post, {as:"post", foreignKey:"posts_id"});
+    };
+
     return Comentario;
 
 }

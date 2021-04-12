@@ -11,8 +11,18 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false //* quando foi criado e quando foi modificado - true e false.
 
         }
-        
     );
+
+        
+    Post.associate = (models) => {
+        // relação n:1 vários posts p 1 usuario
+        Post.belongsTo(models.Usuario, {as:"usuario", foreignKey:"usuarios_id"});
+    }
+
+    Post.associate = (models) => {
+        // relação 1:n (um post p varios comentarios)
+        Post.hasMany(models.Comentario, {as:"comentarios", foreignKey:"posts_id"});
+    }
 
     return Post;
 
