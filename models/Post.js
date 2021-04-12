@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             n_likes: DataTypes.INTEGER
         }, {
             tableName: "posts",
-            timestamps: false
+            timestamps: false //* quando foi criado e quando foi modificado - true e false.
 
         }
         
